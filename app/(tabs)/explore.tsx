@@ -1,109 +1,185 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import React from 'react';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { Stack, useLocalSearchParams } from 'expo-router';
+import { MessageCircle } from 'lucide-react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+export default function JobPage() {
+  const { id } = useLocalSearchParams();
 
-export default function TabTwoScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <>
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerTransparent: true,
+          headerTintColor: '#fff',
+          headerTitle: '',
+        }}
+      />
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
+          <Image
+            source={require('../../assets/images/office-image.png')}
+            style={styles.headerImage}
+          />
+          
+          <View style={styles.content}>
+            <Image
+              source={require('../../assets/images/google-logo.png')}
+              style={styles.logo}
+            />
+            
+            <Text style={styles.title}>Product Designer</Text>
+            <Text style={styles.location}>California, USA</Text>
+            
+            <View style={styles.tabs}>
+              <Text style={[styles.tab, styles.activeTab]}>Description</Text>
+              <Text style={styles.tab}>Company</Text>
+              <Text style={styles.tab}>Aplicant</Text>
+              <Text style={styles.tab}>Salary</Text>
+            </View>
+            
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Job Responsibilities</Text>
+              <Text style={styles.responsibility}>
+                • Deliver a well-crafted design that follows standard for consistency in quality and experience.
+              </Text>
+              <Text style={styles.responsibility}>
+                • Design creative solutions that deliver not only value customer but also solve business objectives.
+              </Text>
+              <Text style={styles.responsibility}>
+                • You are also required to contribute to the design and critics, conceptual discussion, and also maintaining consistency of design system.
+              </Text>
+            </View>
+            
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Skills Needed</Text>
+              <View style={styles.skillsContainer}>
+                <Text style={styles.skill}>Lead</Text>
+                <Text style={styles.skill}>UX Design</Text>
+                <Text style={styles.skill}>Problem Solving</Text>
+                <Text style={styles.skill}>Critical</Text>
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+        
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.messageButton}>
+            <MessageCircle size={24} color="#666" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.applyButton}>
+            <Text style={styles.applyButtonText}>Apply Now</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
   },
-  titleContainer: {
+  headerImage: {
+    width: '100%',
+    height: 200,
+  },
+  content: {
+    padding: 16,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginTop: -30,
+    backgroundColor: '#fff',
+    borderWidth: 2,
+    borderColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  location: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 24,
+  },
+  tabs: {
     flexDirection: 'row',
-    gap: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    marginBottom: 24,
+  },
+  tab: {
+    paddingVertical: 12,
+    marginRight: 24,
+    color: '#666',
+  },
+  activeTab: {
+    color: '#000',
+    fontWeight: 'bold',
+    borderBottomWidth: 2,
+    borderBottomColor: '#000',
+  },
+  section: {
+    marginBottom: 24,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  responsibility: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 12,
+    lineHeight: 24,
+  },
+  skillsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  skill: {
+    backgroundColor: '#f5f5f5',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    marginRight: 8,
+    marginBottom: 8,
+  },
+  footer: {
+    flexDirection: 'row',
+    padding: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+  },
+  messageButton: {
+    width: 48,
+    height: 48,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16,
+  },
+  applyButton: {
+    flex: 1,
+    backgroundColor: '#4169e1',
+    height: 48,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  applyButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '500',
   },
 });
