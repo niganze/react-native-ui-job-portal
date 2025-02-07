@@ -103,7 +103,7 @@ export default function JobPage() {
             <Text style={styles.applyButtonText}>Apply Now</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.messageButton}>
-            <MessageCircle size={24} color="#4F46E5" />
+            <MessageCircle size={24} color="#fff" />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   messageButton: {
     width: 56,
     height: 56,
-    backgroundColor: '#EEF2FF',
+    backgroundColor: '#3F6CDF',
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
   applyButton: {
     flex: 1,
     height: 56,
-    backgroundColor: '#4F46E5',
+    backgroundColor: '#3F6CDF',
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',

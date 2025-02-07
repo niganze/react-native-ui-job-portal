@@ -2,25 +2,30 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-import { Home, BarChart2, Heart, User } from 'lucide-react-native';
+import { HomeIcon, 
+  ChartBarIcon,
+  HeartIcon, 
+  UserIcon, } from 'react-native-heroicons/outline';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel: false, // Remove labels
         tabBarStyle: Platform.select({
           ios: {
             backgroundColor: '#fff',
             borderTopWidth: 1,
             borderTopColor: '#E5E7EB',
-            height: 80,
-            paddingBottom: 20,
+            height: 60, // Adjusted height since we removed labels
+            paddingBottom: 0, // Remove extra padding
           },
           default: {
             backgroundColor: '#fff',
             borderTopWidth: 1,
             borderTopColor: '#E5E7EB',
+            height: 60, // Consistent height across platforms
           },
         }),
         tabBarActiveTintColor: '#4F46E5',
@@ -29,29 +34,25 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => <Home size={24} color={color} />
+          tabBarIcon: () => <HomeIcon size={24} color="black" strokeWidth={2} />
         }}
       />
       <Tabs.Screen
         name="analytics"
         options={{
-          tabBarLabel: 'Analytics',
-          tabBarIcon: ({ color }) => <BarChart2 size={24} color={color} />
+          tabBarIcon: ({ color }) => <ChartBarIcon size={24} color={color} strokeWidth={2} />
         }}
       />
       <Tabs.Screen
         name="favorites"
         options={{
-          tabBarLabel: 'Favorites',
-          tabBarIcon: ({ color }) => <Heart size={24} color={color} />
+          tabBarIcon: ({ color }) => <HeartIcon size={24} color={color} strokeWidth={2} />
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          tabBarLabel: 'Profile',
-          tabBarIcon: ({ color }) => <User size={24} color={color} />
+          tabBarIcon: ({ color }) => <UserIcon size={24} color={color} strokeWidth={2} />
         }}
       />
     </Tabs>
